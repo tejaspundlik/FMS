@@ -40,7 +40,7 @@ public class ReservationController {
                 "http://localhost:8081/api/train/" + reservationRequest.getTrainId(), Map.class);
         int trainFare = (Integer) trainResponse.get("trainFare");
         float totalFare = Math.abs(stationA - stationB) * reservationRequest.getPassengerName().size() * trainFare;
-
+        reservationService.createReservation(reservationRequest);
         ReservationResponse reservationResponse = new ReservationResponse();
         reservationResponse.setTrainId(reservationRequest.getTrainId());
         reservationResponse.setTrainRouteName(reservationRequest.getTrainPathName());
